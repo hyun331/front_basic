@@ -110,6 +110,7 @@
             const newNum2 = num1.filter(a=>a%2==0).map(a=>a*a);
             console.log(newNum2);
 
+            //find
             console.log(num1.find(a=>a%2==0));
 
             //스프레드 문법
@@ -160,14 +161,31 @@
             //typeof(변수명) : 변수의 타입을 리턴
             let num1 = Number(numStr);
             console.log(num1+", type : "+typeof(num1));
-            //NaN(Not a Number) : 발생
+
+            //NaN(Not a Number) : 발생 - 숫자가 아닌데 숫자 연산을 하려고 할 때
             let num2 = Number(str); 
             console.log(num2);
+            console.log(10-"문자열");
 
             //숫자->문자
             //String(숫자)
             num1 = String(num1);
             console.log(num1+", type : "+typeof(num1));
+
+
+            // ==과 ===의 차이
+            // == : 값 비교
+            // === : 타입까지 비교
+            console.log(10=='10');  //true
+            console.log(10==='10'); //false
+
+            // null과 undefined의 차이
+            let output1;
+            let output2=null;
+            console.log(output1+" "+typeof(output1));   //type: undefined
+            console.log(output2+" "+typeof(output2));   //type: object
+            console.log(output1 == output2);    //true
+            console.log(output1 === output2);   //false
 
         }
 
