@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>회원가입 form 예제</h2>
+    <!-- form의 action에는 제출할 서버의 url주소를 입력-->
+    <!-- post : front -> backend에게 주는 것-->
+    <!-- get : 프론트가 서버에게 데이터 요청-->
+    <!--기본(text만)인코딩 형식 : application/x-www-form-urlencoded -->
+    <!--form에 파일까지 포함하는 경우에 enctype="multipart/form-data 사용"-->
+    <form action="http://localhost:8080" method="post" enctype="multipart/form-data">
+        <div>
+            <!--label의 for은 input의 id를 찾아 매핑. 이름을 클릭하면 해당 input태그로 이동-->
+            <label for="userName">이름</label>
+            <!--input의 name속성은 필수. 이 속성은 폼 데이터가 서버로 전송될 때 각 데이터의 항목을 식별하는데 사용됨-->
+            <!-- maxlength = 입력할 문자열 크기. size = 입력할 칸의 크기-->
+            <input type="text" id="userName" name = "name"size="5" maxlength="10" placeholder="홍길동">
+
+        </div>
+
+        <div>
+            <label for="email">이메일</label>
+         
+            <input type="email" id="email" name = "name"size="5" maxlength="10">
+
+        </div>
+
+        <div>
+            <label for="address">주소</label>
+            <!--read only 는 수정은 못하지만 서버로 전송. disable은 수정못하고 서버로 전송도 못함.-->
+            <input type="text" id="address" name = "address" size="5" maxlength="10" value="서울시 신대방동" readonly>
+
+        </div>
+
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" name="password" id="password">
+        </div>
+
+        <!--라디오박스는 택 1-->
+        <div>
+            <label for="gender">성별</label>
+            <input type="radio" name="gender" id="gender" value="male">남성
+            <input type="radio" name="gender" id="gender" value="female" checked>여성
+        </div>
+
+        <!--여러 개의 값이 배열 형태로 저장될 예정-->
+        <div>
+            <label for="interestName">관심분야</label>
+            <input type="checkbox" name="interestName" id="interestName" value="sport">스포츠
+            <input type="checkbox" name="interestName" id="interestName" value="music">음악
+            <input type="checkbox" name="interestName" id="interestName" value="book">독서
+
+        </div>
+
+        <div>
+            <label for="birthday">생년원일</label>
+            <input type="datetime-local" id="birthday" name="birthday">
+
+        </div>
+
+        <div>
+            <label for="age">나이</label>
+            <input type="number" name="age" id="age">
+        </div>
+
+
+        <div>
+            <label>유저선택</label>
+            <select name="userinfo">
+                <option value="admin">관리자</option>
+                <option value="user">일반유저</option>
+                <option value="guest">방문자</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="color">좋아하는 색상</label>
+            <input type="color" name="color" id="color">
+        </div>
+
+
+        <div>
+            <label for="image">증명사진</label>
+            <!--accept : 파일선택 클릭시 이미지만 보이게-->
+            <input type="file" id="image" name="image" accept="image/*">
+        </div>
+
+        <div>
+            <label for="resume">자기소개</label><br>
+            <textarea name="resume" id="resume" rows="5" cols="30" placeholder="자기소개를 입력하세요"></textarea>
+        </div>
+
+        <div>
+            <input type="submit" value="회원가입 완료">
+        </div>
+
+        <!--input, button 둘 다 같은 기능을 하지만 button태그에 디자인적 다양성이 있음. 두 요소 많이 사용-->
+        <button type="submit">회원가입완료</button>
+        
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html css js 통합 기본</title>
+    <style>
+        p{
+            color : gray; text-decoration: underline;
+        }
+        
+
+
+        /* 클래스 선택*/
+        .c1{
+            color: blue; text-align: center;
+        }
+
+        /* id 선택*/
+        #id1{
+
+            color: red;
+        }
+
+
+        /*자손선택자 : 자손 모두에게 영향*/
+        div p{
+            color: yellow;
+        }
+        /*자식선택자 : 직계 자식에게만 영향*/
+        div>h5{
+            color:pink;
+        }
+    
+    
+    </style>
+    <link rel="stylesheet" href="css/mystyle.css">
+
+    <!--load1은 위에서 script. 위에서부터 아래로 내려오면서 읽음. 이 당시 load1 존재하지 않기 때문에 바뀌지 않는다.-->
+    <script>
+        function updateDemo1(){
+            document.getElementById("demo1").innerHTML="변경됨";
+        }
+    </script>
+
+</head>
+<body>
+    <!--CSS 적용 3가지 방법-->
+    <!-- 인라인 스타일 적용 방법-->
+     <p style="color: green; text-align: center; text-decoration: underline;">hihihildkdkdldlsl</p>
+
+
+     <!--내부 스타일 적용 방법. 태그 선택자, 클래스 선택자, id(유일) 선택자-->
+     <p>태그 선택자 적용</p>
+     <p class="c1">클래스 선택자 적용</p>
+     <p class="c1" id="id2">클래스 선택자 적용</p>
+     <p id="id1">id 선택자 적용</p>
+    
+
+    <!-- 외부 스타일 적용-->
+    <h3 id="external"> 외부스타일 적용</h3>
+
+
+
+    <!--자손 선택자-->
+    <div>
+        <h2>자손선택자 예시</h2>
+        <p>첫번째 단락</p>
+        <section><p>두번째 단락</p></section>
+    </div>
+
+
+    <div>
+        <h2>자식선택자 예시</h2>
+        <h5>첫번째 단락</h5>
+        <section><p>두번째 단락</p></section>
+    </div>
+
+
+
+    <h2>javascript 예시</h2>
+    <p id="load1">js 로드 순서 1</p>
+    <p id="load2">js 로드 순서 2</p>
+    <script>
+        //이 문서에서.load2라는 요소 가져와서.여기에 있는 값을 바꾼다=이값으로
+        document.getElementById("load2").innerHTML="change2";
+
+    </script>
+
+    <p id="demo1">변경될 내용1</p>
+    <button onclick="updateDemo1()">내용변경1</button>
+    <p id="demo2" >변경될 내용2</p>
+    <button onclick="updateDemo2()">내용변경2</button>
+    <script>
+        function updateDemo2(){
+            document.getElementById("demo2").innerHTML="변경됨";
+        }
+    </script>
+
+
+
+
+<p id="demo3">변경될 내용3</p>
+<script src = "js/myjs.js"></script>
+</body>
+
+</html>
