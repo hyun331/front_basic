@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <script>
+        function getResult() {
+            let a = Number(document.getElementById("a").value);
+            let b = Number(document.getElementById("b").value);
+
+            let calculator = document.getElementById("calculator").value;
+
+            let result;
+            if (calculator == 'plus') {
+                result = a + b;
+            }
+            else if (calculator == 'minus') {
+                result = a - b;
+            }
+            else if (calculator == 'multiply') {
+                result = a * b;
+            }
+            else if (calculator == 'divide') {
+                if (b != 0)
+                    result = a / b;
+                else
+                    result = "0으로 나눌 수 없습니다.";
+            }
+
+            document.getElementById("result").innerHTML = result;
+        }
+
+    </script>
+</head>
+
+<body>
+    <h2>계산기 프로그램 구현</h2>
+    <div>
+        <!-- 사용자로부터 사칙 연산을 선택 -->
+        <label>사칙연산 선택</label>
+        <select id="calculator">
+            <option value="plus">덧셈</option>
+            <option value="minus">뺄셈</option>
+            <option value="multiply">곱셈</option>
+            <option value="divide">나눗셈</option>
+        </select>
+        <input type="text" id="a">
+        <input type="text" id="b">
+        <button onclick="getResult()">실행</button>
+    </div>
+    <div>
+        결과값&nbsp;&nbsp;<span id="result"></span>
+    </div>
+</body>
+
+</html>

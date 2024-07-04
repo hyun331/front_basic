@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON 직렬화 및 역직렬화 실습</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+    <br>
+
+    <div class="container" style="width: 80%;">
+        <h2>개인 성적</h2><br>
+        <!-- 단일 학생의 테이블을 생성 -->
+         <table class="table" id="table1" style="margin:auto">
+            <tr><th>NAME</th><th>AGE</th><th>SCORE</th></tr>
+
+         </table>
+       
+    </div>
+
+    <script>
+        //DOM이 완성되지 않았는데 innerHTML 사용하면 에러남.
+        // body의 맨 마지막에 위치시켜서 body를 다 읽고 script를 진행하도록 함.
+        //단일 객체
+        const jsonTxt1 = '{"name":"Alice","age":25,"score":85}';
+        //객체 배열
+        const jsonTxt2 = '[{"name":"Alice","age":25,"score":85},{"name":"Bob","age":28,"score":92},{"name":"Charlie","age":32,"score":88}]';
+        
+        //JSON 역직렬화(파싱, json->객체)
+        const obj1 = JSON.parse(jsonTxt1);
+        console.log(obj1);
+
+        const keys = Object.keys(obj1);
+        let addHtml = "";
+
+
+        //객체 하나만 있는 경우
+        // keys.forEach(a=>{
+        //     addHtml += "<tr><td>"+a+"</td><td>"+obj1[a]+"</td></tr>";
+        // });
+
+        //객체 배열 출력
+        const obj2 = JSON.parse(jsonTxt2);
+        for(let i=0; i<obj2.length; i++){
+            addHtml += "<tr><td>"+obj2[i].name+"</td><td>"+obj2[i].age+"</td><td>"+obj2[i].score+"</td></tr>"
+            console.log(obj2[i]);
+        }
+       
+        console.log(addHtml);
+        
+        document.getElementById("table1").innerHTML+=addHtml;
+
+
+        //json 직렬화 (객체->json)
+        const jsonTxt3 = JSON.stringify(obj2);
+        console.log(jsonTxt3);
+
+    </script>
+    
+    
+</body>
+</html>

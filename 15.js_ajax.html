@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js_Ajax</title>
+    <!-- ajax는 서버에 데이터를 달라고 요청하는 기술. 옛날 기술 -->
+     
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+    <script>
+        //DOM 객체가 완전히 로드된 이후에 코드를 실행한다라는 의미
+        //DOM이 완료되면 실행 -> 비동기(안그러면 될 때까지 아래 코드들은 기다려야 함)
+        //콜백함수
+        $(document).ready(function(){
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/posts/1",
+                type: 'GET',
+                dataType: 'json',   //위에서 주는 데이터가 json이라는 것을 명시
+                success: function(a){   //위의 콜백과는 동기적이어야함.
+                    console.log(a); //a는 url에서 받은 정보
+                    //분명 json을 받아왔는데 객체로 출력됨. 왜??
+                    //->ajax가 알아서 객체로 바꿔줌(json.parse)
+                },
+                error: function(a){
+
+                }
+            })
+        })
+
+        console.log("hello world");
+
+    </script>
+</body>
+</html>
