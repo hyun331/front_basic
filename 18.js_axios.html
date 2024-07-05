@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js_axios</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+
+        async function postApi1() {
+            //기본이 json. 다른 자료형이면 더 세팅해줘야함
+            //axios를 통해 데이터를 가져오면 .data를 써야함. 데이터가 data키의 값으로 들어옴.
+            const response1 = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+            console.log(response1.data);
+        }
+
+        async function postApi2() {
+            try {
+                const response2 = await axios.get("https://jsonplaceholder.typicode.com/posts");
+                //console.log(response2.data); //배열안에 객체 형태로
+                response2.data.forEach(post => {
+                    console.log(`UserId : ${post.userId}\nID : ${post.id}\nTitle : ${post.title}\ncontents:${post.body}`);
+                });
+            } catch (e) {
+                console.log(e);
+            }
+
+
+        }
+
+        postApi2();
+    </script>
+</body>
+
+</html>

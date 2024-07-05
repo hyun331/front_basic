@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>author list</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"></head>
+<body>
+    <object style="width: 100%;" data="header.html" type="text/html"></object>
+
+    <div class="container">
+        <div class="page-header">
+            <h3>Author 전체 조회</h3>
+        </div>
+
+        <table class="table">
+            <tr><th>ID</th><th>NAME</th><th>EMAIL</th><th>PW</th></tr>
+            <tbody id="list_body">
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        async function showAllAuthor(){
+            const inputArea = document.getElementById("list_body");
+            try{
+                const response = await axios.get("http://localhost:8081/author/list");
+                response.data.forEach(author=>{
+                    inputArea.innerHTML += `<tr><td>${author.id}</td><td>${author.name}</td><td>${author.email}</td><td>${author.password}</td></tr>`;
+                })
+            }catch(e){
+                console.log(e);
+                inputArea.innerHTML = "Author가 존재하지 않습니다.";
+            }
+        }
+        showAllAuthor();
+
+    </script>
+    
+</body>
+</html>
+
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback 지옥</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script>
+        //16.callback_hell.html의 3개를 각각 따로 두고싶다 -> 비동기안의 동기를 어떻게 보장할건지?
+        //async와 await를 이용하여 보장해주기!
+        //async 키워드 : 이 함수는 비동기다!
+        async function callBackHell() {
+            //await : 여기서 기다려야 한다.
+            const response1 = await $.ajax({
+                url: "https://jsonplaceholder.typicode.com/posts/1",
+                type: 'GET',
+                dataType: 'json',
+                success: function(a){
+                    console.log("a : "+a);
+                },
+                error: function(){}
+            });
+
+            const response2 = await $.ajax({
+                url: "https://jsonplaceholder.typicode.com/posts/1",
+                type: 'GET',
+                dataType: 'json',
+                success: function(b){
+                    console.log("b : "+b);
+                },
+                error: function(){}
+            });
+
+            const response3 = await $.ajax({
+                url: "https://jsonplaceholder.typicode.com/posts/1",
+                type: 'GET',
+                dataType: 'json',
+                success: function(c){
+                    console.log("c : "+c);
+                },
+                error: function(){}
+            });
+            
+            
+        }
+        callBackHell();
+        console.log("hello world");
+
+
+    </script>
+</body>
+
+</html>
